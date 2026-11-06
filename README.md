@@ -101,14 +101,6 @@ SentinelNet/
 
 The `.pkt` file is the simulation artifact. The Markdown documents explain the intended design and the tests recorded for this project. The `configs/` folder contains reconstructed CLI references, not verified running-config exports; see `configs/README.md` before using them.
 
-## Important before making the repository public
-
-- Review the Packet Tracer file for embedded device credentials, pre-shared VPN keys, or other secrets.
-- Change any demonstration passwords and VPN keys before publishing or presenting the project.
-- Do not commit real company data, private keys, production IPs, or confidential network diagrams.
-- Add screenshots of the topology and successful/blocked tests to `screenshots/` if you have them.
-- Confirm that your course/team permits public release of the simulation file.
-
 **Credential hygiene:** passwords are intentionally not reproduced in this repository. Use the credentials configured in your local simulation, and replace any weak/demo credentials before sharing.
 
 ## Scope and disclaimer
