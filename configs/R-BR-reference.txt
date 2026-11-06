@@ -1,0 +1,16 @@
+! SentinelNet - R-BR reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname R-BR
+
+! Project intent:
+! - Branch LAN connectivity for BR-PC1 and BR-PC2
+! - OSPF route exchange toward HQ
+! - IPsec site-to-site VPN with R-HQ
+!
+! Verify branch LAN subnet, WAN interface/IP, OSPF process/area and VPN peer.
+! VPN design recorded in project notes: AES-256, SHA, pre-shared-key auth.
+! Do not publish or commit the actual pre-shared key.
+end
+write memory

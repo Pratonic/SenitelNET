@@ -1,0 +1,32 @@
+! SentinelNet - DSW2 reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname DSW2
+
+vlan 10
+ name ENGINEERING
+vlan 20
+ name EDA
+vlan 30
+ name IP_VAULT
+vlan 40
+ name GUEST
+vlan 99
+ name MANAGEMENT
+
+! Configure matching VLAN SVIs and the same virtual HSRP gateway (.1).
+! Project notes specify DSW2 HSRP priority 100 (DSW1 is preferred at 105).
+! Verify each real SVI address, HSRP group and interface before use.
+
+! DHCP split scope recorded in project notes:
+! DSW2 serves .128 through .254 in each applicable client subnet.
+! Configure excluded addresses and pools to match the actual topology.
+
+! OSPF: match the process, area, networks and point-to-point link settings
+! used on DSW1 and R-HQ.
+
+! Mirror the security ACL policy from DSW1 so a gateway failover does not
+! change access policy. Verify ACL names, directions and interface bindings.
+end
+write memory

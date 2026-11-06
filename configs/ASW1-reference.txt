@@ -1,0 +1,25 @@
+! SentinelNet - ASW1 reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname ASW1
+
+! Endpoints connected per project notes:
+! Eng-PC, Guest-Laptop, Admin-PC.
+! Assign each access port to the correct VLAN after checking the topology.
+interface <ENGINEERING_ACCESS_PORT>
+ switchport mode access
+ switchport access vlan 10
+interface <GUEST_ACCESS_PORT>
+ switchport mode access
+ switchport access vlan 40
+interface <ADMIN_ACCESS_PORT>
+ switchport mode access
+ switchport access vlan 99
+
+! Uplinks to DSW1/DSW2 are trunks; verify actual port numbers and
+! allowed VLAN list in Packet Tracer.
+interface <UPLINK_PORT>
+ switchport mode trunk
+end
+write memory

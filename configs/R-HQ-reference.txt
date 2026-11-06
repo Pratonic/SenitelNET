@@ -1,0 +1,29 @@
+! SentinelNet - R-HQ reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname R-HQ
+
+! Project intent:
+! - ISP-facing connectivity
+! - NAT/PAT for private 192.168.x.x networks
+! - OSPF route exchange with HQ distribution switches and branch
+! - IPsec site-to-site VPN to R-BR
+!
+! NAT/PAT command pattern (interfaces/ACL must be verified):
+! access-list <NAT_ACL> permit ip 192.168.0.0 0.0.255.255 any
+! interface <INSIDE_INTERFACE>
+!  ip nat inside
+! interface <OUTSIDE_INTERFACE>
+!  ip nat outside
+! ip nat inside source list <NAT_ACL> interface <OUTSIDE_INTERFACE> overload
+!
+! OSPF point-to-point intent on router-to-distribution links:
+! interface <HQ_DSW_LINK>
+!  ip ospf network point-to-point
+!
+! VPN intent from project notes: IPsec site-to-site, AES-256, SHA,
+! pre-shared-key authentication. Peer IP, transform-set syntax, crypto map,
+! interesting-traffic ACL and key are intentionally not guessed here.
+end
+write memory

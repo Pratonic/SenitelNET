@@ -1,0 +1,20 @@
+! SentinelNet - ASW2 reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname ASW2
+
+! Endpoints connected per project notes:
+! EDA-Server belongs to VLAN 20; Vault-Server belongs to VLAN 30.
+interface <EDA_SERVER_ACCESS_PORT>
+ switchport mode access
+ switchport access vlan 20
+interface <VAULT_SERVER_ACCESS_PORT>
+ switchport mode access
+ switchport access vlan 30
+
+! Uplink(s) to the distribution layer are trunks.
+interface <UPLINK_PORT>
+ switchport mode trunk
+end
+write memory

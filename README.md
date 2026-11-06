@@ -99,7 +99,7 @@ SentinelNet/
 3. Open `packet-tracer/SentinelNet.pkt` in Packet Tracer.
 4. Inspect the topology and run the validation commands in [`docs/demo-guide.md`](docs/demo-guide.md).
 
-The `.pkt` file is the simulation artifact. The Markdown documents explain the intended design and the tests recorded for this project.
+The `.pkt` file is the simulation artifact. The Markdown documents explain the intended design and the tests recorded for this project. The `configs/` folder contains reconstructed CLI references, not verified running-config exports; see `configs/README.md` before using them.
 
 ## Important before making the repository public
 

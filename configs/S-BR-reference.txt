@@ -1,0 +1,19 @@
+! SentinelNet - S-BR reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname S-BR
+
+! Branch user access ports. Verify the actual branch VLAN and subnet
+! from the Packet Tracer topology before assigning ports.
+interface <BRANCH_PC1_PORT>
+ switchport mode access
+ switchport access vlan <BRANCH_VLAN>
+interface <BRANCH_PC2_PORT>
+ switchport mode access
+ switchport access vlan <BRANCH_VLAN>
+interface <UPLINK_TO_R_BR>
+ switchport mode access
+ ! Use the actual topology's routed/access design; do not assume trunking.
+end
+write memory

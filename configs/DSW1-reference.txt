@@ -1,0 +1,47 @@
+! SentinelNet - DSW1 reference CLI
+! Reconstructed from the project brief; NOT a verified running-config export.
+enable
+configure terminal
+hostname DSW1
+
+! VLAN segmentation
+vlan 10
+ name ENGINEERING
+vlan 20
+ name EDA
+vlan 30
+ name IP_VAULT
+vlan 40
+ name GUEST
+vlan 99
+ name MANAGEMENT
+
+! Example SVI pattern - verify exact IPs and HSRP group numbers first
+interface vlan 10
+ ip address 192.168.10.2 255.255.255.0
+ standby 10 ip 192.168.10.1
+ standby 10 priority 105
+ standby 10 preempt
+ no shutdown
+
+! Repeat SVI/gateway pattern for VLANs 20, 30, 40 and 99.
+! Verify the actual DSW1 SVI addresses in Packet Tracer before use.
+
+! HSRP intent:
+! DSW1 preferred active (priority 105); DSW2 priority 100.
+! Track the DSW1-to-R-HQ uplink so loss of that link reduces
+! DSW1 priority to 95 and allows DSW2 to take over.
+! Exact interface and track object IDs must be verified.
+
+! DHCP split scope recorded in project notes:
+! DSW1 serves .11 through .127 in each applicable client subnet.
+! Configure excluded addresses and pools to match the actual topology.
+
+! OSPF intent: advertise HQ VLAN/WAN networks as used in the simulation.
+! HQ router-to-distribution links were changed to point-to-point.
+! Verify process ID, area, networks and interfaces before use.
+
+! Apply the corresponding VLAN ACLs on DSW1 as well as DSW2.
+! End policy ACLs with an explicit deny ip any any where appropriate.
+end
+write memory
